@@ -1,0 +1,73 @@
+Configuration	delivery_trolley_f103_full
+STM32CubeMX 	4.26.1
+Date	03/16/2019
+MCU	STM32F103RCTx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+I2C2	I2C	I2C2_SCL	PB10
+I2C2	I2C	I2C2_SDA	PB11
+SYS	Serial Wire	SYS_JTCK-SWCLK	PA14
+SYS	Serial Wire	SYS_JTMS-SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+TIM1	Internal Clock	TIM1_VS_ClockSourceINT	VP_TIM1_VS_ClockSourceINT
+TIM3	Encoder Mode	TIM3_CH1	PA6
+TIM3	Encoder Mode	TIM3_CH2	PA7
+TIM4	Encoder Mode	TIM4_CH1	PB6
+TIM4	Encoder Mode	TIM4_CH2	PB7
+TIM8	PWM Generation CH1	TIM8_CH1	PC6
+TIM8	PWM Generation CH2	TIM8_CH2	PC7
+TIM8	PWM Generation CH3	TIM8_CH3	PC8
+TIM8	PWM Generation CH4	TIM8_CH4	PC9
+USART1	Asynchronous	USART1_RX	PA10
+USART1	Asynchronous	USART1_TX	PA9
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+9	PC1	GPIO_Output	PS2_DO
+10	PC2	GPIO_Input	PS2_DI
+11	PC3	GPIO_Output	PS2_CS
+20	PA4	GPIO_Output	PS2_CLK
+22	PA6	TIM3_CH1	
+23	PA7	TIM3_CH2	
+29	PB10	I2C2_SCL	
+30	PB11	I2C2_SDA	
+37	PC6	TIM8_CH1	
+38	PC7	TIM8_CH2	
+39	PC8	TIM8_CH3	
+40	PC9	TIM8_CH4	
+42	PA9	USART1_TX	
+43	PA10	USART1_RX	
+46	PA13	SYS_JTMS-SWDIO	
+49	PA14	SYS_JTCK-SWCLK	
+58	PB6	TIM4_CH1	
+59	PB7	TIM4_CH2	
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : delivery_trolley_f103_full
+Project Folder : H:\Courses\智能机器人实践\程序\delivery_trolley_f103_full
+Toolchain / IDE : MDK-ARM V5
+Firmware Package Name and Version : STM32Cube FW_F1 V1.6.1
+
+
+Code Generation Settings : 
+STM32Cube Firmware Library Package : Copy all used libraries into the project folder
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : Yes
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : 
+
+
+
+
+
