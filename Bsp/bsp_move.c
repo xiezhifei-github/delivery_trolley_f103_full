@@ -15,7 +15,7 @@ extern double turn_min_spd;
 
 extern uint16_t ps2_LX,ps2_LY,ps2_RX,ps2_RY,ps2_KEY;
 
-extern int set_spd[2];
+extern float set_spd[2];
 
 /**********************************************
 Function name:   BSP_Compare_Msg
@@ -65,8 +65,13 @@ uint8_t BSP_Compare_Msg(uint8_t* rx_msg)
 	
 }
 
-
-void BSP_Control(void)
+/**********************************************
+Function name:   BSP_Control
+Features:        处理ps2接收到的消息，控制小车运动
+Parameter:       无
+Return value:    无
+**********************************************/
+void BSP_Move_Ps2_Control(void)
 {
 	
 	switch(ps2_KEY)
@@ -97,11 +102,18 @@ void BSP_Control(void)
 		case PS2_JOY_PSB_PAD_RIGHT:
 			TURN_RIGHT(turn_target_spd);break;
 	}
-	printf("%x...\n",ps2_KEY);
+	//printf("%x...move:%lf...turn:%lf\n",ps2_KEY,move_target_spd,turn_target_spd);
 	
 }
 
-void BSP_Scan_Command(void)
+
+/**********************************************
+Function name:   BSP_Move_Ps2_Scan_Command
+Features:        扫描ps2遥控数据
+Parameter:       无
+Return value:    无，直接操作全局变量ps2_KEY
+**********************************************/
+void BSP_Move_Ps2_Scan_Command(void)
 {
 	PS2_ReadData();
 	ps2_KEY=PS2_getKey();

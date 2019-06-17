@@ -26,6 +26,9 @@
 #include "inv_mpu_dmp_motion_driver.h"
 #include "inv_mpu.h"
 #include "kalman_filter.h"
+#include "bsp_navi.h"
+#include "bsp_lock.h"
+#include "bsp_mode.h"
 //#include "bsp_fitler.h"
 /* User Code End Include Files **********************/
 

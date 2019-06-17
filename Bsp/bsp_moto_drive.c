@@ -33,9 +33,9 @@ double new_value[2];
 
 /**********************************************
 Function name:   BSP_Moto_GetValue
-Features:        æ ¹æ® moto_id èŽ·å–ç¼–ç å™¨è¯»æ•°
-Parameter:       moto_id---ç”µæœºIDï¼Œå‚è€ƒ MotoIDTypeDef
-Return value:    æ— 
+Features:        ¸ù¾Ý moto_id »ñÈ¡±àÂëÆ÷¶ÁÊý
+Parameter:       moto_id---µç»úID£¬²Î¿¼ MotoIDTypeDef
+Return value:    ÎÞ
 **********************************************/
 uint32_t BSP_Moto_GetValue(MotoIDTypeDef moto_id)
 {
@@ -55,11 +55,11 @@ uint32_t BSP_Moto_GetValue(MotoIDTypeDef moto_id)
 
 /**********************************************
 Function name:   BSP_Moto_SetSpeed
-Features:        è®¾å®šæŒ‡å®šç”µæœºçš„pwmå€¼
-Parameter:       moto_id---ç”µæœºIDï¼Œå‚è€ƒ MotoIDTypeDef
-                 direction---è½¬åŠ¨æ–¹å‘ï¼Œå‚è€ƒDirectionTypeDef
-                 value---pwmå€¼ï¼ŒèŒƒå›´åœ¨0~1600-1ï¼ˆPeriodï¼‰ä¹‹é—´
-Return value:    æ— 
+Features:        Éè¶¨Ö¸¶¨µç»úµÄpwmÖµ
+Parameter:       moto_id---µç»úID£¬²Î¿¼ MotoIDTypeDef
+                 direction---×ª¶¯·½Ïò£¬²Î¿¼DirectionTypeDef
+                 value---pwmÖµ£¬·¶Î§ÔÚ0~1600-1£¨Period£©Ö®¼ä
+Return value:    ÎÞ
 **********************************************/
 void BSP_Moto_SetSpeed(MotoIDTypeDef moto_id, DirectionTypeDef direction, uint32_t value)
 {
@@ -94,10 +94,10 @@ void BSP_Moto_SetSpeed(MotoIDTypeDef moto_id, DirectionTypeDef direction, uint32
 
 /**********************************************
 Function name:   BSP_Moto_Control
-Features:        è®¾å®šä¸¤ä¸ªç”µæœºè½¬é€Ÿ
-Parameter:       value1---ç”µæœº1 pwm å€¼ï¼Œåœ¨-1599~1599ä¹‹é—´ï¼ˆPeriodï¼‰
-                 value1---ç”µæœº2 pwm å€¼ï¼Œåœ¨-1599~1599ä¹‹é—´
-Return value:    æ— 
+Features:        Éè¶¨Á½¸öµç»ú×ªËÙ
+Parameter:       value1---µç»ú1 pwm Öµ£¬ÔÚ-1599~1599Ö®¼ä£¨Period£©
+                 value1---µç»ú2 pwm Öµ£¬ÔÚ-1599~1599Ö®¼ä
+Return value:    ÎÞ
 **********************************************/
 void BSP_Moto_Control(double value1, double value2)
 {
@@ -107,13 +107,12 @@ void BSP_Moto_Control(double value1, double value2)
 
 /**********************************************
 Function name:   BSP_Moto_SpeedControlOutput
-Features:        çº¿æ€§æ’å€¼pid.outï¼Œè§£å†³å¯åŠ¨éœ‡é¢¤çš„é—®é¢˜
-Parameter:       pid---å¾…æ’å€¼pidçš„ç»“æž„ä½“
-                 cnt---å½“å‰è®¡æ•°å€¼
-Return value:    æ— 
+Features:        ÏßÐÔ²åÖµpid.out£¬½â¾öÆô¶¯Õð²üµÄÎÊÌâ
+Parameter:       pid---´ý²åÖµpidµÄ½á¹¹Ìå
+                 cnt---µ±Ç°¼ÆÊýÖµ
+Return value:    ÎÞ
 **********************************************/
 void BSP_Moto_SpeedControlOutput(moto_pid *pid, uint8_t cnt)
 {
-	pid->out+=(pid->target-pid->out)/control_period*(cnt+1);
+	pid->out+=(pid->target-pid->out)*1.0/control_period*(cnt+1);
 }
-

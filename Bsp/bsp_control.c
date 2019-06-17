@@ -2,67 +2,67 @@
 
 extern double pid_lpf;
 
-/**********************************************
-Function name:   BSP_Pid_Init
-Features:        pidç»“æ„ä½“åˆå§‹åŒ–ï¼Œèµ‹å€¼Kpã€Kiã€Kd
-Parameter:       pid---pidç»“æ„ä½“æŒ‡é’ˆ
-                 id---pidæ ‡è¯†
-								 kp---P
-								 ki---i
-								 kd---d
-Return value:    æ— 
-**********************************************/
+/*************************************************
+ * Function name:   BSP_Pid_Init
+ * Features:        pid½á¹¹Ìå³õÊ¼»¯£¬¸³ÖµKp¡¢Ki¡¢Kd
+ * Parameter:       pid---pid½á¹¹ÌåÖ¸Õë
+ *                  id---pid±êÊ¶
+ * 								 kp---P
+ * 								 ki---i
+ * 								 kd---d
+ * Return value:    ÎŞ
+*************************************************/
 void BSP_Pid_Init(moto_pid *pid, pid_id id, float kp, float ki, float kd)
 {
-	pid->id=id;
+	pid->id = id;
 	
-	pid->Kp=kp;
-	pid->Ki=ki;
-	pid->Kd=kd;
+	pid->Kp = kp;
+	pid->Ki = ki;
+	pid->Kd = kd;
 	
-	pid->err=0;
-	pid->integer=0;
-	pid->last_err=0;
-	pid->pre_err=0;
+	pid->err = 0;
+	pid->integer = 0;
+	pid->last_err = 0;
+	pid->pre_err = 0;
 	
-	pid->out=0;
-	pid->out_last=0;
+	pid->out = 0;
+	pid->out_last = 0;
 }
 
 /**********************************************
-Function name:   BSP_Pid_SetTarget
-Features:        è®¾å®špidçš„ç›®æ ‡å€¼
-Parameter:       pid---pidç»“æ„ä½“æŒ‡é’ˆ
-                 target---ç›®æ ‡å€¼
-Return value:    æ— 
-**********************************************/
+ * Function name:   BSP_Pid_SetTarget
+ * Features:        Éè¶¨pidµÄÄ¿±êÖµ
+ * Parameter:       pid---pid½á¹¹ÌåÖ¸Õë
+ *                  target---Ä¿±êÖµ
+ * Return value:    ÎŞ
+*************************************************/
 void BSP_Pid_SetTarget(moto_pid *pid, double target)
 {
 	pid->target=target;
 }
 
-/**********************************************
-Function name:   BSP_Pid_SetCurrent
-Features:        è®¾å®špidçš„ç›®æ ‡å€¼
-Parameter:       pid---pidç»“æ„ä½“æŒ‡é’ˆ
-                 current---å½“å‰å€¼
-Return value:    æ— 
-**********************************************/
+/*************************************************
+ * Function name:   BSP_Pid_SetCurrent
+ * Features:        Éè¶¨pidµÄµ±Ç°Öµ
+ * Parameter:       pid---pid½á¹¹ÌåÖ¸Õë
+ *                  current---µ±Ç°Öµ
+ * Return value:    ÎŞ
+*************************************************/
 void BSP_Pid_SetCurrent(moto_pid *pid, double current)
 {
 	if(current>-20000&&current<20000)
 		pid->current=current;
 }
 
-/**********************************************
-Function name:   BSP_Pid_calculate
-Features:        è®¡ç®—pidè¾“å‡º
-Parameter:       pid---pidç»“æ„ä½“æŒ‡é’ˆ
-Return value:    æ— 
-**********************************************/
+/*************************************************
+ * Function name:   BSP_Pid_calculate
+ * Features:        ¼ÆËãpidÊä³ö
+ * Parameter:       pid---pid½á¹¹ÌåÖ¸Õë
+ * Return value:    ÎŞ
+*************************************************/
 void BSP_Pid_calculate(moto_pid *pid)
 {
-	//ä½ç½®å¼pid
+	//Î»ÖÃÊ½pid
 	pid->err=pid->target-pid->current;
 	
 	pid->proportion=pid->err-pid->last_err;
@@ -85,14 +85,14 @@ void BSP_Pid_calculate(moto_pid *pid)
 	
 	pid->out=pid_lpf*pid->out +(1-pid_lpf)*pid->out_last;
 		
-	//æ§åˆ¶å•æ¬¡pidè¾“å‡ºçš„å˜åŒ–ä¸è¶…è¿‡MAX_PID_CHANGEï¼Œï¼Œï¼Œï¼Œä½¿å¹³æ»‘
+	//¿ØÖÆµ¥´ÎpidÊä³öµÄ±ä»¯²»³¬¹ıMAX_PID_CHANGE£¬£¬£¬£¬Ê¹Æ½»¬
 	if(pid->out-pid->out_last > MAX_PID_CHANGE)
 		pid->out=pid->out_last+MAX_PID_CHANGE;
 	if(pid->out-pid->out_last < -MAX_PID_CHANGE)
 		pid->out=pid->out_last-MAX_PID_CHANGE;
 	pid->out_last=pid->out;
 	
-	//è¾“å‡ºé™å¹…
+	//Êä³öÏŞ·ù
 	if(pid->out>MAX_SPD)
 		pid->out=MAX_SPD;
 	if(pid->out<-MAX_SPD)

@@ -179,7 +179,7 @@ void BSP_MPU6050_ReturnTemp(short*Temperature)
 	*Temperature=(((double) (temp3 + 13200)) / 280)-13;
 }
 
-void BSP_MPU6050_Test(void)
+ void BSP_MPU6050_Test(void)
 {
 	int result = mpu_init(&int_param_s);
 	if(!result)

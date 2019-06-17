@@ -49,6 +49,8 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define LOCK_Pin GPIO_PIN_13
+#define LOCK_GPIO_Port GPIOC
 #define PS2_DO_Pin GPIO_PIN_1
 #define PS2_DO_GPIO_Port GPIOC
 #define PS2_DI_Pin GPIO_PIN_2
@@ -57,13 +59,20 @@
 #define PS2_CS_GPIO_Port GPIOC
 #define PS2_CLK_Pin GPIO_PIN_4
 #define PS2_CLK_GPIO_Port GPIOA
+#define MODE_SELECT_Pin GPIO_PIN_12
+#define MODE_SELECT_GPIO_Port GPIOB
+#define LED_BLUE_Pin GPIO_PIN_13
+#define LED_BLUE_GPIO_Port GPIOB
+#define MODE_SWITCH_Pin GPIO_PIN_14
+#define MODE_SWITCH_GPIO_Port GPIOB
+#define MODE_SWITCH_EXTI_IRQn EXTI15_10_IRQn
 
 /* ########################## Assert Selection ############################## */
 /**
   * @brief Uncomment the line below to expanse the "assert_param" macro in the 
   *        HAL drivers code
   */
-/* #define USE_FULL_ASSERT    1U */
+ #define USE_FULL_ASSERT    1U 
 
 /* USER CODE BEGIN Private defines */
 

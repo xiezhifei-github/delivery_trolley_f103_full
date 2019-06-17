@@ -40,6 +40,13 @@ static void PS2_ExitConfing(void);	 //完成配置
 	
 extern uint16_t ps2_LX,ps2_LY,ps2_RX,ps2_RY,ps2_KEY;
 	
+	
+/**********************************************
+Function name:   PS2_test
+Features:        PS2测试函数
+Parameter:       无
+Return value:    无
+**********************************************/
 void PS2_test(void)
 {
 	int ps2_LX,ps2_LY,ps2_RX,ps2_RY,ps2_KEY;
@@ -61,6 +68,12 @@ void PS2_test(void)
 }
 
 //手柄配置初始化
+/**********************************************
+Function name:   PS2_SetInit
+Features:        PS2初始化函数
+Parameter:       无
+Return value:    无
+**********************************************/
 void PS2_SetInit(void)
 {
 	PS2_ShortPoll();
@@ -74,13 +87,19 @@ void PS2_SetInit(void)
 	
 	PS2_ExitConfing();		//完成并保存配置
 	// 震动一下下
-//	PS2_Vibration(0x0,0xFF);
-//	HAL_Delay(200);
+	//PS2_Vibration(0x0,0xFF);
+	//HAL_Delay(200);
 //	PS2_Vibration(0x0,0x0);
 	
 }
 
 //向手柄发送命令
+/**********************************************
+Function name:   PS2_Cmd
+Features:        向PS2手柄发送指令
+Parameter:       CMD---命令
+Return value:    无代码，在0x01-0x0100之间
+**********************************************/
 void PS2_Cmd(uint8_t CMD)
 {
 	volatile uint16_t ref=0x01;

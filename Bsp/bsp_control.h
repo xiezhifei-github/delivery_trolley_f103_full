@@ -8,8 +8,8 @@
 #include "i2c.h"
 #include "tim.h"
 
-#define MAX_SPD 16*80          //pwmæœ€å¤§å ç©ºæ¯”
-#define MAX_PID_CHANGE 400   //å•æ¬¡pidè¾“å‡ºæœ€å¤§å˜åŒ–å€¼
+#define MAX_SPD 16*80          //pwm×î´óÕ¼¿Õ±È
+#define MAX_PID_CHANGE 400   //µ¥´ÎpidÊä³ö×î´ó±ä»¯Öµ
 
 typedef uint8_t pid_id;
 typedef uint8_t k_flag;

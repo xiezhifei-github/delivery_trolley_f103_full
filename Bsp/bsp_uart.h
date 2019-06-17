@@ -29,6 +29,18 @@ typedef struct
 	
 }tx_message;
 
+typedef struct
+{
+	uint8_t head;
+	double_u8_union linear;
+	uint8_t seg;
+	double_u8_union angular;
+}navi_message;
+
+
+
 void BSP_UART_Transmit(tx_message* tx_msg);
+void BSP_UART_Receive(void);
+void BSP_UART_DataLimit(tx_message *tx_msg);
 
 #endif
